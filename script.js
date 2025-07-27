@@ -19,10 +19,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   generateCaptcha();
 
+  // Configurar máscara para el campo de teléfono
+  const phoneInput = document.getElementById('telefono');
+  // Prefijar el valor con (+506) y aplicar formato mientras el usuario escribe
+  function formatPhone(value) {
+    // Eliminar todo lo que no sea número
+    let numbers = value.replace(/[^0-9]/g, '');
+    // Quitar el código 506 si aparece por error en la entrada
+    if (numbers.startsWith('506')) {
+      numbers = numbers.substring(3);
+    }
+    // Limitar a 8 dígitos
+    numbers = numbers.substring(0, 8);
+    let formatted = '(+506) ';
+    if (numbers.length > 4) {
+      formatted += numbers.substring(0, 4) + '-' + numbers.substring(4);
+    } else {
+      formatted += numbers;
+    }
+    return formatted;
+  }
+  // Establecer el valor inicial
+  phoneInput.value = '(+506) ';
+  // Aplicar formato al escribir
+  phoneInput.addEventListener('input', (e) => {
+    phoneInput.value = formatPhone(phoneInput.value);
+  });
+  // Seleccionar posición del cursor después del prefijo
+  phoneInput.addEventListener('focus', () => {
+    if (!phoneInput.value) {
+      phoneInput.value = '(+506) ';
+    }
+    // Colocar el cursor al final
+    setTimeout(() => {
+      phoneInput.selectionStart = phoneInput.selectionEnd = phoneInput.value.length;
+    }, 0);
+  });
+
   form.addEventListener('submit', event => {
     event.preventDefault();
     // Validación del teléfono costarricense (+506) 9999-9999
-    const phoneInput = document.getElementById('telefono');
     const phoneValue = phoneInput.value.trim();
     const phoneRegex = /^\(\+506\)\s\d{4}-\d{4}$/;
     if (!phoneRegex.test(phoneValue)) {
