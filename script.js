@@ -65,12 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Por favor ingresa un número de teléfono válido en el formato (+506) 9999-9999.');
       return;
     }
+    // Serializar el formulario como urlencoded para que Express pueda leerlo
     const formData = new FormData(form);
+    const params = new URLSearchParams();
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
     fetch('/submit-form', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
     })
-      .then(response => response.json())
+      .then(response => {
+        // Si no es JSON, devolver error
+        return response.json();
+      })
       .then(data => {
         if (data.success) {
           alert(data.message);
