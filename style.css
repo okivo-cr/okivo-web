@@ -1,0 +1,246 @@
+/* Paleta de colores */
+:root {
+  --primary-color: #003764; /* Azul profundo */
+  --secondary-color: #00b8b7; /* Turquesa */
+  --light-color: #f5f7fa;
+  --text-color: #2a2a2a;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-color);
+}
+
+/* Encabezado */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--white);
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  height: 50px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: var(--secondary-color);
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+.btn-primary {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: #009696;
+}
+.btn-secondary {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: 2px solid var(--secondary-color);
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/* Secciones */
+section {
+  padding: 100px 0;
+}
+
+/* Hero */
+#hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding-top: 160px; /* dejar espacio para el header */
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.hero-text {
+  flex: 1;
+  padding-right: 30px;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+.hero-image img {
+  width: 450px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Secciones de contenido */
+#como-funciona, #ventajas, #testimonios {
+  background-color: var(--light-color);
+}
+#contacto {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+#como-funciona h2, #ventajas h2, #testimonios h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+}
+#contacto h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--white);
+}
+
+.steps, .benefits, .testimonials {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.step, .benefit, .testimonial {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 25px;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.step .icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+.benefit h3 {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+.benefit p {
+  color: var(--text-color);
+}
+.testimonial p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.testimonial span {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Formulario de contacto */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact-form label {
+  font-weight: 600;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+}
+.contact-form button {
+  align-self: flex-start;
+}
+
+/* Pie de página */
+footer {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 40px 0;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.footer-logo img {
+  width: 200px;
+}
+.footer-info p {
+  margin: 4px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 10px;
+  }
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text {
+    padding: 0;
+  }
+  .hero-image {
+    margin-top: 30px;
+  }
+  .steps, .benefits, .testimonials {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
