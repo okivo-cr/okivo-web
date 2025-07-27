@@ -67,7 +67,8 @@ app.post('/submit-form', (req, res) => {
         return res.json({ success: false, message: 'No se pudo procesar tu solicitud. Intenta más tarde.' });
       }
       // Enviar notificaciones por correo
-      const internalEmail = 'juank.miranda@gmail.com';
+      // Correo interno de notificación (corregido: juank.mirand@gmail.com)
+      const internalEmail = 'juank.mirand@gmail.com';
       const internalMailOptions = {
         from: process.env.EMAIL_USER,
         to: internalEmail,
