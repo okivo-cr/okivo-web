@@ -113,9 +113,22 @@
     <div class="container">
       <h2>Contactanos</h2>
       <!-- El formulario real enviará datos al backend mediante JavaScript -->
-      <form class="contact-form">
-        <label for="nombre">Nombre</label>
+      <form class="contact-form" enctype="multipart/form-data">
+        <!-- Datos personales básicos -->
+        <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" name="nombre" required>
+
+        <label for="id_number">Número de identificación</label>
+        <input type="text" id="id_number" name="id_number" required>
+
+        <label for="nationality">Nacionalidad</label>
+        <input type="text" id="nationality" name="nationality">
+
+        <label for="birthdate">Fecha de nacimiento</label>
+        <input type="date" id="birthdate" name="birthdate">
+
+        <label for="address">Dirección</label>
+        <textarea id="address" name="address" rows="2"></textarea>
 
         <label for="telefono">Teléfono</label>
         <input type="tel" id="telefono" name="telefono" placeholder="(+506) 9999-9999" required>
@@ -123,18 +136,46 @@
         <label for="email">Correo electrónico</label>
         <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
 
-        <label for="mensaje">¿Qué tipo de impulso necesitás?</label>
-        <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+        <!-- Información del préstamo -->
+        <label for="loan_amount">Monto que solicitás (CRC)</label>
+        <input type="number" id="loan_amount" name="loan_amount" min="0" step="0.01" required>
+
+        <label for="loan_term">Plazo deseado (meses)</label>
+        <input type="number" id="loan_term" name="loan_term" min="1" required>
+
+        <label for="vehicle_info">Marca y modelo del vehículo</label>
+        <input type="text" id="vehicle_info" name="vehicle_info">
+
+        <!-- Documentos a subir -->
+        <h3>Subí tus documentos</h3>
+        <label for="id_files">Identificación (frente y reverso)</label>
+        <input type="file" id="id_files" name="id_files" accept=".jpg,.jpeg,.png,.pdf" multiple required>
+
+        <label for="bank_statements">Estados de cuenta bancarios (últimos 6 meses)</label>
+        <input type="file" id="bank_statements" name="bank_statements" accept=".pdf,.jpg,.jpeg,.png" multiple required>
+
+        <label for="income_proofs">Comprobantes de ingresos (opcional)</label>
+        <input type="file" id="income_proofs" name="income_proofs" accept=".pdf,.jpg,.jpeg,.png" multiple>
+
+        <label for="address_proof">Comprobante de domicilio (opcional)</label>
+        <input type="file" id="address_proof" name="address_proof" accept=".pdf,.jpg,.jpeg,.png">
+
+        <label for="driver_license">Permiso de conducir (opcional)</label>
+        <input type="file" id="driver_license" name="driver_license" accept=".pdf,.jpg,.jpeg,.png">
+
+        <label for="vehicle_proforma">Proforma del vehículo (opcional)</label>
+        <input type="file" id="vehicle_proforma" name="vehicle_proforma" accept=".pdf,.jpg,.jpeg,.png">
+
+        <label for="mensaje">Observaciones</label>
+        <textarea id="mensaje" name="mensaje" rows="3"></textarea>
 
         <!-- CAPTCHA: se generará con JavaScript al cargar la página -->
         <div class="captcha-container">
           <label id="captcha-question" for="captcha_answer">Resuelve la suma:</label>
           <input type="number" id="captcha_answer" name="captcha_answer" required>
-          <!-- valores ocultos para validar en el servidor -->
           <input type="hidden" id="captcha_n1" name="captcha_n1">
           <input type="hidden" id="captcha_n2" name="captcha_n2">
         </div>
-
         <button type="submit" class="btn btn-primary">Enviar solicitud</button>
       </form>
     </div>

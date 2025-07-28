@@ -1,0 +1,17 @@
+{
+  "name": "okivo-website",
+  "version": "1.0.0",
+  "description": "Sitio de aterrizaje para Okivo con formulario de solicitud de crédito y backend en Node",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "body-parser": "^1.20.2",
+    "sqlite3": "^5.1.6",
+    "nodemailer": "^6.9.3",
+    "multer": "^1.4.5",
+    "path": "^0.12.7"
+  }
+}

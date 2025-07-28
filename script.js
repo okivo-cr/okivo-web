@@ -65,27 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Por favor ingresa un número de teléfono válido en el formato (+506) 9999-9999.');
       return;
     }
-    // Serializar el formulario como urlencoded para que Express pueda leerlo
+    // Crear un objeto FormData para enviar archivos y campos
     const formData = new FormData(form);
-    const params = new URLSearchParams();
-    for (const [key, value] of formData.entries()) {
-      params.append(key, value);
-    }
+    // Enviar usando fetch; no se establece Content-Type para que el navegador defina los límites
     fetch('/submit-form', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params.toString()
+      body: formData
     })
-      .then(response => {
-        // Si no es JSON, devolver error
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         if (data.success) {
           alert(data.message);
           form.reset();
+          // Restablecer máscara de teléfono
+          phoneInput.value = '(+506) ';
           // Generar un nuevo captcha para la siguiente solicitud
           generateCaptcha();
         } else {
